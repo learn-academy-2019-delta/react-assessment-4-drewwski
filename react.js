@@ -16,7 +16,7 @@ export default class App extends React.Component {
 }
 
 
-// 2. Refactor this vanilla javascript loop to a map function. The output should remain the same. 
+2. Refactor this vanilla javascript loop to a map function. The output should remain the same. 
 
 var names = ["Ford Prefect", "Arthur Dent", "Trillian", "Zaphod", "Vogon", "Marvin, the Paranoid Android"]
 
@@ -26,12 +26,13 @@ for(let i=0; i<names.length; i++){
 
 
 3. Destructure the following variables out of state:
-let { name, home, dislikes } = this.state
+
 this.state = {
   name: "Dracula",
   home: "Transylvania",
   dislikes: ["mirrors", "garlic", "wooden stakes"]
 }
+let { name, home, dislikes } = this.state
 
 4. Write a React method that would add one to the count and update the state.
 
@@ -48,26 +49,29 @@ const addOne = () => {
 
 import React, { Component } from 'react';
 
-export default class Recipes extends Component {
+class Recipes extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      recipes:
+      recipes: [
         {name: 'Meatballs'},
-        {name: 'Mac & Cheese'}
+        {name: 'Mac & Cheese'}]
     }
   }
 
   render() {
+    let recipes = this.state.recipes
+    recipes = recipes.map(recipe => {
     return(
-      let recipes = recipes.map(recipe => {
-        return(
           <li key={recipe.name}>{recipe.name}</li>
         )
       })
+      return(
       <ul>
         {recipes}
       </ul>
     )
   }
 }
+
+export default Recipes
